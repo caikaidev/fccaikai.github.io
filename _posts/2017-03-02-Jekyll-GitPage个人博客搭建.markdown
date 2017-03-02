@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
+title:  "Jekyll GitPage个人博客搭建"
 date:   2017-03-02 15:37:27 +0800
 categories: jekyll update
 ---
