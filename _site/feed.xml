@@ -1,5 +1,117 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.0">Jekyll</generator><link href="http://fccaikai.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="http://fccaikai.github.io/" rel="alternate" type="text/html" /><updated>2017-03-02T18:23:23+08:00</updated><id>http://fccaikai.github.io/</id><title type="html">蔡凯的博客</title><subtitle>技术分享
-</subtitle><entry><title type="html">Jekyll GitPage个人博客搭建</title><link href="http://fccaikai.github.io/jekyll/update/2017/03/02/Jekyll-GitPage%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA.html" rel="alternate" type="text/html" title="Jekyll GitPage个人博客搭建" /><published>2017-03-02T15:37:27+08:00</published><updated>2017-03-02T15:37:27+08:00</updated><id>http://fccaikai.github.io/jekyll/update/2017/03/02/Jekyll-GitPage%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA</id><content type="html" xml:base="http://fccaikai.github.io/jekyll/update/2017/03/02/Jekyll-GitPage%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.0">Jekyll</generator><link href="http://fccaikai.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="http://fccaikai.github.io/" rel="alternate" type="text/html" /><updated>2017-03-03T09:37:38+08:00</updated><id>http://fccaikai.github.io/</id><title type="html">蔡凯的博客</title><subtitle>技术分享
+</subtitle><entry><title type="html">Android 运行时权限处理</title><link href="http://fccaikai.github.io/jekyll/update/2017/03/03/Jekyll-Android-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%9D%83%E9%99%90%E5%A4%84%E7%90%86.html" rel="alternate" type="text/html" title="Android 运行时权限处理" /><published>2017-03-03T09:31:00+08:00</published><updated>2017-03-03T09:31:00+08:00</updated><id>http://fccaikai.github.io/jekyll/update/2017/03/03/Jekyll-Android%20%E8%BF%90%E8%A1%8C%E6%97%B6%E6%9D%83%E9%99%90%E5%A4%84%E7%90%86</id><content type="html" xml:base="http://fccaikai.github.io/jekyll/update/2017/03/03/Jekyll-Android-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%9D%83%E9%99%90%E5%A4%84%E7%90%86.html">&lt;h3 id=&quot;android-运行时权限处理&quot;&gt;Android 运行时权限处理&lt;/h3&gt;
+
+&lt;h4 id=&quot;描述&quot;&gt;描述&lt;/h4&gt;
+&lt;p&gt;从Android 6.0（API级别23）开始，用户开始在应用运行时向其授予权限，而不是在应用安装时授予。此方法可以简化应用安装过程，因为用户在安装或更新应用时不需要授予权限。它还让用户可以对应用的功能进行更多控制；例如，用户可以选择为相机应用提供相机访问权限，而不提供设备位置的访问权限。用户可以随时进入应用的“Settings”屏幕调用权限。具体介绍详见&lt;a href=&quot;https://developer.android.com/training/permissions/requesting.html&quot;&gt;官网介绍&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h4 id=&quot;权限类别&quot;&gt;权限类别&lt;/h4&gt;
+&lt;p&gt;系统权限分为了两种类别：正常权限和危险权限。
+正常权限：可以只要在&lt;code class=&quot;highlighter-rouge&quot;&gt;AndroidManifest.xml&lt;/code&gt;中进行配置就可以了；
+危险权限：除了在&lt;code class=&quot;highlighter-rouge&quot;&gt;AndroidManifest.xml&lt;/code&gt;中进行配置，还需要在运行时进行权限的请求，也就是本文所需要讲述的内容。&lt;/p&gt;
+
+&lt;p&gt;可以通过以下命令行来查询危险权限&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ adb shell pm list permissions -d -g
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;检查权限&quot;&gt;检查权限&lt;/h3&gt;
+
+&lt;p&gt;当我们需要使用某一个权限时，我们要先检查一下，系统是否已经授予了我们这个权限。比如：当想调用系统相机时，需要去检查一下，是否有打开相机的权限。
+使用&lt;a href=&quot;https://developer.android.com/reference/android/support/v4/content/ContextCompat.html#checkSelfPermission(android.content.Context, java.lang.String)&quot;&gt;ContextCompat.checkSelfPermission()&lt;/a&gt;方法来检查是否具有某项权限。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;int permissionCheck = ContextCompat.checkSelfPermission(thisActivity,
+        Manifest.permission.WRITE_CALENDAR);
+if(permissionCheck == PackageManager.PERMISSION_GRANTED){
+	//具有此权限
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;当返回值permissionCheck等于&lt;a href=&quot;https://developer.android.com/reference/android/content/pm/PackageManager.html#PERMISSION_GRANTED&quot;&gt;PackageManager.PERMISSION_GRANTED&lt;/a&gt;时，表示用户具有此权限，可以继续打开相机；返回值等于&lt;a href=&quot;https://developer.android.com/reference/android/content/pm/PackageManager.html#PERMISSION_DENIED&quot;&gt;PackageManager. PERMISSION_DENIED&lt;/a&gt;时，表示未授权、必须向用户请求权限。&lt;/p&gt;
+
+&lt;h3 id=&quot;请求权限&quot;&gt;请求权限&lt;/h3&gt;
+
+&lt;p&gt;通过&lt;a href=&quot;https://developer.android.com/reference/android/support/v4/app/ActivityCompat.html#requestPermissions(android.app.Activity, java.lang.String[], int)&quot;&gt;ActivityCompat.requestPermissions()&lt;/a&gt;方法请求你所需要的权限。
+此方法需要传入三个参数：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;void requestPermissions (Activity activity, 
+                String[] permissions, 
+                int requestCode)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;当前Activity实例&lt;/li&gt;
+  &lt;li&gt;权限组（可以同时请求多个权限）&lt;/li&gt;
+  &lt;li&gt;请求码（回调的时候需要用到）&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ww4.sinaimg.cn/large/006tNc79gy1fcvwtij8p4j30a00hsaa2.jpg&quot; alt=&quot;请求权限&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// 先检查权限
+if (ContextCompat.checkSelfPermission(thisActivity,
+                Manifest.permission.READ_CONTACTS)
+        != PackageManager.PERMISSION_GRANTED) {
+
+    // 解释一下为什么需要此权限，稍后会讲到这个方法
+    if (ActivityCompat.shouldShowRequestPermissionRationale(thisActivity,
+            Manifest.permission.CAMETA)) {
+				//可以做一个弹出框，解释一下为什么需要此权限
+        
+
+    } else {
+
+        //请求权限
+        ActivityCompat.requestPermissions(thisActivity,
+                new String[]{Manifest.permission.CAMETA},
+                MY_PERMISSIONS_REQUEST_READ_CONTACTS);
+
+    }
+}else{
+		//已有权限、直接进行操作
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;处理权限请求相应&quot;&gt;处理权限请求相应&lt;/h3&gt;
+&lt;p&gt;用户处理权限之后，会回调到&lt;code class=&quot;highlighter-rouge&quot;&gt; onRequestPermissionsResult()&lt;/code&gt;方法。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@Override
+public void onRequestPermissionsResult(int requestCode,
+        String permissions[], int[] grantResults) {
+    switch (requestCode) {
+        case MY_PERMISSIONS_REQUEST_READ_CONTACTS: {
+            // 如果请求被取消、grantResults 是空的，这里需要做一个判断是否大于0
+            if (grantResults.length &amp;gt; 0
+                &amp;amp;&amp;amp; grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+								//这里我们只请求了Camera权限，所以只要取grantResults[0]来判断是否授权
+								//TODO 打开相机
+            } else {
+
+            		//用户拒绝授权
+            }
+            return;
+        }
+
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;解释为什么需要权限&quot;&gt;解释为什么需要权限&lt;/h3&gt;
+
+&lt;p&gt;当用户拒绝一次之后，&lt;code class=&quot;highlighter-rouge&quot;&gt;ActivityCompat.shouldShowRequestPermissionRationale&lt;/code&gt;方法会返回&lt;code class=&quot;highlighter-rouge&quot;&gt;true&lt;/code&gt;。我们就可以给用户再次做一个解释，为什么需要这个权限。&lt;/p&gt;
+
+&lt;h4 id=&quot;备注当用户点击不在提醒此权限授权后返回值也是false不再提醒之后请求权限是直接返回授权失败的&quot;&gt;备注：当用户点击不在提醒此权限授权后，返回值也是false。不再提醒之后，请求权限是直接返回授权失败的。&lt;/h4&gt;
+
+&lt;h3 id=&quot;结束&quot;&gt;结束&lt;/h3&gt;
+&lt;p&gt;运行时的权限处理到这里也差不多了，内容不是很多，Android 6.0+的占有率也越来越高了，也需要对自己的app做一下适配了。使用的时候可以进行一层封装，这样的话会更加的简单便捷。&lt;/p&gt;
+
+&lt;p&gt;这个是我自己做的一个权限请求库：&lt;a href=&quot;https://github.com/fccaikai/AndroidPermissionX&quot;&gt;AndroidPermissionX&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;欢迎大家给出建议，觉得好的话请给一个star。&lt;/p&gt;</content><author><name></name></author><summary type="html">Android 运行时权限处理</summary></entry><entry><title type="html">Jekyll GitPage个人博客搭建</title><link href="http://fccaikai.github.io/jekyll/update/2017/03/02/Jekyll-GitPage%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA.html" rel="alternate" type="text/html" title="Jekyll GitPage个人博客搭建" /><published>2017-03-02T15:37:27+08:00</published><updated>2017-03-02T15:37:27+08:00</updated><id>http://fccaikai.github.io/jekyll/update/2017/03/02/Jekyll-GitPage%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA</id><content type="html" xml:base="http://fccaikai.github.io/jekyll/update/2017/03/02/Jekyll-GitPage%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
 
 &lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
 
