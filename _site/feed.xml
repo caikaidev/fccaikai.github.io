@@ -1,5 +1,1393 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.0">Jekyll</generator><link href="http://fccaikai.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="http://fccaikai.github.io/" rel="alternate" type="text/html" /><updated>2017-03-03T09:37:38+08:00</updated><id>http://fccaikai.github.io/</id><title type="html">蔡凯的博客</title><subtitle>技术分享
-</subtitle><entry><title type="html">Android 运行时权限处理</title><link href="http://fccaikai.github.io/jekyll/update/2017/03/03/Jekyll-Android-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%9D%83%E9%99%90%E5%A4%84%E7%90%86.html" rel="alternate" type="text/html" title="Android 运行时权限处理" /><published>2017-03-03T09:31:00+08:00</published><updated>2017-03-03T09:31:00+08:00</updated><id>http://fccaikai.github.io/jekyll/update/2017/03/03/Jekyll-Android%20%E8%BF%90%E8%A1%8C%E6%97%B6%E6%9D%83%E9%99%90%E5%A4%84%E7%90%86</id><content type="html" xml:base="http://fccaikai.github.io/jekyll/update/2017/03/03/Jekyll-Android-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%9D%83%E9%99%90%E5%A4%84%E7%90%86.html">&lt;h3 id=&quot;android-运行时权限处理&quot;&gt;Android 运行时权限处理&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.0">Jekyll</generator><link href="http://fccaikai.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="http://fccaikai.github.io/" rel="alternate" type="text/html" /><updated>2017-03-03T10:01:15+08:00</updated><id>http://fccaikai.github.io/</id><title type="html">蔡凯的博客</title><subtitle>技术分享
+</subtitle><entry><title type="html">发布项目到Github</title><link href="http://fccaikai.github.io/jekyll/update/2017/03/03/Jekyll-%E5%8F%91%E5%B8%83%E9%A1%B9%E7%9B%AE%E5%88%B0GitHub.html" rel="alternate" type="text/html" title="发布项目到Github" /><published>2017-03-03T10:00:00+08:00</published><updated>2017-03-03T10:00:00+08:00</updated><id>http://fccaikai.github.io/jekyll/update/2017/03/03/Jekyll-%E5%8F%91%E5%B8%83%E9%A1%B9%E7%9B%AE%E5%88%B0GitHub</id><content type="html" xml:base="http://fccaikai.github.io/jekyll/update/2017/03/03/Jekyll-%E5%8F%91%E5%B8%83%E9%A1%B9%E7%9B%AE%E5%88%B0GitHub.html">&lt;h2 id=&quot;说明&quot;&gt;说明&lt;/h2&gt;
+&lt;p&gt;GitHub上有许多优秀的开源代码。我们也可以讲自己的代码托管在Github上，现在就开始讲解一下如何将本地的代码提交到GitHub。现在已Android studio项目为例（其他项目都是一样）&lt;/p&gt;
+
+&lt;h3 id=&quot;第一步&quot;&gt;第一步&lt;/h3&gt;
+&lt;p&gt;先做好准备工作：
+首先，你需要有一个GitHub帐号，
+https://github.com ，如何注册这个就不用说了。
+然后安装Git。在https://git-scm.com 下载对应的系统版本就好了。
+输入&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git --version
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;出现以下结果就说明安装成功了
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1715403-00317ef326504a12?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;这里写图片描述&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;用刚才注册的GitHub帐号登录完成后，可以看到：
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1715403-53c06db2a418de48?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;这里写图片描述&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;点击’New Repository’创建一个新的仓库&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1715403-fb97051317dc8064?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;这里写图片描述&quot; /&gt;
+项目名称必须要填，描述可以不用，最后一个是否初始化README可以选，也可以后面自己新建。暂时先不选。
+点击’create repository’ 完成创建。
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1715403-98b000fc43f00b9c?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;这里写图片描述&quot; /&gt;
+先把框里面的路径复制下来，后面需要用到，现在在GitHub上的操作基本已经完成了。&lt;/p&gt;
+
+&lt;h2 id=&quot;第二步&quot;&gt;第二步&lt;/h2&gt;
+&lt;p&gt;先进入到项目根目录下&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd &amp;lt;项目路径&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;再进行初始化&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git init
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1715403-aaf3c53483c3efa3?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;这里写图片描述&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;使用&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git add .
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;将本目录下的所有文件添加到git管理
+然后使用&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git commit -m '备注信息'
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;提交直本地git仓库，现在已经完成了本地的提交，现在我们需要继续关联到GitHub上
+使用&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git remote add origin https://github.com/caikcode/GitHubDemo.git
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;https://github.com/caikcode/GitHubDemo.git 就是在GitHub上新建完仓库后获得的地址
+最后使用&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git push -u origin master
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;将本地代码提交至GitHub&lt;/p&gt;
+
+&lt;p&gt;注意：第一次使用的时候会提示配置用户名密码，将你在GitHub上注册的配置一下就好了。&lt;/p&gt;</content><author><name></name></author><summary type="html">说明 GitHub上有许多优秀的开源代码。我们也可以讲自己的代码托管在Github上，现在就开始讲解一下如何将本地的代码提交到GitHub。现在已Android studio项目为例（其他项目都是一样）</summary></entry><entry><title type="html">将Android项目发布到本地Maven仓库</title><link href="http://fccaikai.github.io/jekyll/update/2017/03/03/Jekyll-%E5%8F%91%E5%B8%83Android%E9%A1%B9%E7%9B%AE%E5%88%B0%E6%9C%AC%E5%9C%B0Maven%E4%BB%93%E5%BA%93.html" rel="alternate" type="text/html" title="将Android项目发布到本地Maven仓库" /><published>2017-03-03T09:58:00+08:00</published><updated>2017-03-03T09:58:00+08:00</updated><id>http://fccaikai.github.io/jekyll/update/2017/03/03/Jekyll-%E5%8F%91%E5%B8%83Android%E9%A1%B9%E7%9B%AE%E5%88%B0%E6%9C%AC%E5%9C%B0Maven%E4%BB%93%E5%BA%93</id><content type="html" xml:base="http://fccaikai.github.io/jekyll/update/2017/03/03/Jekyll-%E5%8F%91%E5%B8%83Android%E9%A1%B9%E7%9B%AE%E5%88%B0%E6%9C%AC%E5%9C%B0Maven%E4%BB%93%E5%BA%93.html">&lt;h1 id=&quot;说明&quot;&gt;说明&lt;/h1&gt;
+&lt;p&gt;android studio 中我们可以通过在gradle.build中添加配置来导入引用库，如：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;compile 'com.kcode.github.pubutils:androidLib:0.0.1'
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;通过这个可以看出’com.kcode.github.pubutils:androidLib:0.0.1’由三部分组成，分别是Maven中的&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;project&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;xsi:schemaLocation=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;xmlns=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://maven.apache.org/POM/4.0.0&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;xmlns:xsi=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;modelVersion&amp;gt;&lt;/span&gt;4.0.0&lt;span class=&quot;nt&quot;&gt;&amp;lt;/modelVersion&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;com.kcode.github.pubutils&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;androidLib&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;0.0.1&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;packaging&amp;gt;&lt;/span&gt;aar&lt;span class=&quot;nt&quot;&gt;&amp;lt;/packaging&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/project&amp;gt;&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;groupId:唯一标识符
+artifactId：类似于项目名称
+version：版本号
+现在我们来创建一个自己的本地库。&lt;/p&gt;
+
+&lt;h2 id=&quot;第一步&quot;&gt;第一步&lt;/h2&gt;
+&lt;p&gt;新建一个Android项目。在gradle.properties中添加一下信息&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#包信息
+GROUP_ID = com.kcode.github.pubutils
+
+# Licence信息
+PROJ_LICENCE_NAME=The Apache Software License, Version 2.0
+PROJ_LICENCE_URL=http://www.apache.org/licenses/LICENSE-2.0.txt
+PROJ_LICENCE_DEST=repo
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;GROUP_ID：就是刚才的groupId&lt;/p&gt;
+
+&lt;p&gt;下面的Licence信息是固定的&lt;/p&gt;
+
+&lt;h2 id=&quot;第二步&quot;&gt;第二步&lt;/h2&gt;
+&lt;p&gt;创建一个Libary,我命名为AndroidLib
+在Libary的根目录下新建gradle.properties文件，添加&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#包信息
+ARTIFACTID = androidLib
+LIBRARY_VERSION = 0.0.2
+
+#Mac下地址:file:///Users/&amp;lt;username&amp;gt;/my/local/repo
+LOCAL_REPO_URL=file:///Users/caik/my/local/repo
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;ARTIFACTID：开始说的到artifactId
+LIBRARY_VERSION：版本号
+LOCAL_REPO_URL：本地仓库的地址：file://+本地路径&lt;/p&gt;
+
+&lt;h2 id=&quot;第三步&quot;&gt;第三步&lt;/h2&gt;
+&lt;p&gt;在Library也就是刚才创建的AndroidLib下的gradle.build中添加&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apply plugin: 'maven'
+
+uploadArchives{
+    repositories.mavenDeployer{
+        repository(url:LOCAL_REPO_URL)
+        pom.groupId = GROUP_ID
+        pom.artifactId = ARTIFACTID
+        pom.version = LIBRARY_VERSION
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h2 id=&quot;第四步&quot;&gt;第四步&lt;/h2&gt;
+&lt;p&gt;最后在项目路径下执行：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;./gradlew -p &amp;lt;Library name&amp;gt; clean build uploadArchives --info
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;我这里就是：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;./gradlew -p androidlib clean build uploadArchives --info
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;等执行结束到刚才设置好的&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;LOCAL_REPO_URL=file:///Users/caik/my/local/repo
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;路径下就可以看到已经发布好的本次仓库&lt;/p&gt;
+
+&lt;h2 id=&quot;第五步&quot;&gt;第五步&lt;/h2&gt;
+&lt;p&gt;引用，先在最外层的gradle.build中添加本地maven库路径&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.1.0'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+
+        maven {
+            url 'file:///Users/caik/my/local/repo/'
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;就是：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;maven {
+            url 'file:///Users/caik/my/local/repo/'
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;然后在需要引用这个库的项目的gradle.build中添加：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;compile 'com.kcode.github.pubutils:androidLib:0.0.1'
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;就可以了。&lt;/p&gt;
+
+&lt;p&gt;项目GitHub地址:https://github.com/fccaikai/LocalMavenDemo&lt;/p&gt;</content><author><name></name></author><summary type="html">说明 android studio 中我们可以通过在gradle.build中添加配置来导入引用库，如： ``` compile ‘com.kcode.github.pubutils:androidLib:0.0.1’</summary></entry><entry><title type="html">Android 自定义轮播图片控件使用</title><link href="http://fccaikai.github.io/jekyll/update/2017/03/03/Jekyll-Android-%E8%87%AA%E5%AE%9A%E4%B9%89%E8%BD%AE%E6%92%AD%E5%9B%BE%E7%89%87%E6%8E%A7%E4%BB%B6%E4%BD%BF%E7%94%A8.html" rel="alternate" type="text/html" title="Android 自定义轮播图片控件使用" /><published>2017-03-03T09:56:00+08:00</published><updated>2017-03-03T09:56:00+08:00</updated><id>http://fccaikai.github.io/jekyll/update/2017/03/03/Jekyll-Android%20%E8%87%AA%E5%AE%9A%E4%B9%89%E8%BD%AE%E6%92%AD%E5%9B%BE%E7%89%87%E6%8E%A7%E4%BB%B6%E4%BD%BF%E7%94%A8</id><content type="html" xml:base="http://fccaikai.github.io/jekyll/update/2017/03/03/Jekyll-Android-%E8%87%AA%E5%AE%9A%E4%B9%89%E8%BD%AE%E6%92%AD%E5%9B%BE%E7%89%87%E6%8E%A7%E4%BB%B6%E4%BD%BF%E7%94%A8.html">&lt;h3 id=&quot;效果图&quot;&gt;效果图&lt;/h3&gt;
+&lt;p&gt;直接先上效果图。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1715403-cbf7c309b85e2770.gif?imageMogr2/auto-orient/strip&quot; alt=&quot;轮播图.gif&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;###实现原理
+本篇主要讲如何在项目中引用。具体实现请查看&lt;a href=&quot;http://www.jianshu.com/p/5c47cb6afe0f&quot;&gt;Android 自定义轮播图&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;###添加依赖
+在module的&lt;code class=&quot;highlighter-rouge&quot;&gt;build.gradle&lt;/code&gt;中添加：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;allprojects {
+    repositories {
+        jcenter()
+        maven { url &quot;https://jitpack.io&quot; }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;在app的&lt;code class=&quot;highlighter-rouge&quot;&gt;build.gradle&lt;/code&gt;中添加:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	compile 'com.github.fccaikai:AutoScrollViewPager:0.7.0', {
+        exclude group: 'com.android.support', module: 'appcompat-v7'
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;exclude group: 'com.android.support', module: 'appcompat-v7'
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;是为了解决appcompat版本的冲突，因为我这里用的是24.2.0版本，你们的app可能不是这个版本。&lt;/p&gt;
+
+&lt;p&gt;###布局文件&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;activity_main.xml
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;RelativeLayout&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;xmlns:android=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://schemas.android.com/apk/res/android&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;xmlns:tools=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://schemas.android.com/tools&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@+id/activity_main&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:layout_width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;match_parent&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;match_parent&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;tools:context=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;com.kcode.autoviewpager.MainActivity&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;com.kcode.autoscrollviewpager.view.AutoScrollViewPager&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@+id/viewPager&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:layout_width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;match_parent&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;220dp&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/com.kcode.autoscrollviewpager.view.AutoScrollViewPager&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/RelativeLayout&amp;gt;&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;###Activity&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;package com.kcode.autoviewpager;
+
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.kcode.autoscrollviewpager.view.AutoScrollViewPager;
+import com.kcode.autoscrollviewpager.view.BaseViewPagerAdapter;
+import com.kcode.autoviewpager.bean.Picture;
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity {
+
+    private AutoScrollViewPager mViewPager;
+
+    private String[] paths = {&quot;https://ss3.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/image/h%3D200/sign=c493b482b47eca800d053ee7a1229712/8cb1cb1349540923abd671df9658d109b2de49d7.jpg&quot;,
+            &quot;https://ss0.baidu.com/94o3dSag_xI4khGko9WTAnF6hhy/image/h%3D200/sign=45fbfa5555da81cb51e684cd6267d0a4/2f738bd4b31c8701491ea047237f9e2f0608ffe3.jpg&quot;,
+            &quot;https://ss2.baidu.com/-vo3dSag_xI4khGko9WTAnF6hhy/image/h%3D200/sign=ae0e95c0fc1986185e47e8847aec2e69/0b46f21fbe096b63eb314ef108338744ebf8ac62.jpg&quot;,
+            &quot;https://ss3.baidu.com/9fo3dSag_xI4khGko9WTAnF6hhy/image/h%3D200/sign=1fad2b46952397ddc9799f046983b216/dc54564e9258d109c94bbb13d558ccbf6d814de2.jpg&quot;,
+            &quot;https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/h%3D200/sign=ff0999f6d4160924c325a51be406359b/86d6277f9e2f070861ccd4a0ed24b899a801f241.jpg&quot;};
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+		//初始化AutoScrollViewPager对象
+        mViewPager = (AutoScrollViewPager) findViewById(R.id.viewPager);
+        //设置Adapter，这里需要重写loadImage方法，在里面加载图片，这里我使用的是Picasso框架，你可以换成你自己的。
+        mViewPager.setAdapter(new BaseViewPagerAdapter&amp;lt;String&amp;gt;(this,initData(),listener) {
+            @Override
+            public void loadImage(ImageView view, int position, String url) {
+                Picasso.with(MainActivity.this).load(url).into(view);
+            }
+        });
+
+
+    }
+
+    private List&amp;lt;String&amp;gt; initData() {
+        List&amp;lt;String&amp;gt; data = new ArrayList&amp;lt;&amp;gt;();
+        Picture picture ;
+        for (int i = 0 ; i &amp;lt; paths.length ;i++){
+            data.add(paths[i]);
+        }
+        return data;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //记得在销毁的时候调用onDestroy()方法。用来销毁定时器。
+        mViewPager.onDestroy();
+    }
+
+	//定义点击事件
+    private BaseViewPagerAdapter.OnAutoViewPagerItemClickListener listener = new BaseViewPagerAdapter.OnAutoViewPagerItemClickListener&amp;lt;String&amp;gt;() {
+
+        @Override
+        public void onItemClick(int position, String url) {
+            Toast.makeText(getApplicationContext(),
+                    url, Toast.LENGTH_SHORT).show();
+        }
+    };
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;#####主要代码：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;初始化&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  mViewPager = (AutoScrollViewPager) findViewById(R.id.viewPager);
+      mViewPager.setAdapter(new BaseViewPagerAdapter&amp;lt;String&amp;gt;(this,initData(),listener) {
+          @Override
+          public void loadImage(ImageView view, int position, String url) {
+              Picasso.with(MainActivity.this).load(url).into(view);
+          }
+      });
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;点击事件&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  private BaseViewPagerAdapter.OnAutoViewPagerItemClickListener listener = new BaseViewPagerAdapter.OnAutoViewPagerItemClickListener&amp;lt;String&amp;gt;() {
+
+      @Override
+      public void onItemClick(int position, String url) {
+          Toast.makeText(getApplicationContext(),
+                  url, Toast.LENGTH_SHORT).show();
+      }
+  };
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;源码地址：&lt;a href=&quot;https://github.com/fccaikai/AutoScrollViewPager&quot;&gt;AutoViewPager&lt;/a&gt;  欢迎大家start。还在更新中，目前可能还不是很完善。&lt;/p&gt;
+
+&lt;p&gt;我的简书：http://www.jianshu.com/users/629c1b27e187/latest_articles
+喜欢的可以关注一下。&lt;/p&gt;</content><author><name></name></author><summary type="html">效果图 直接先上效果图。</summary></entry><entry><title type="html">Android 自定义轮播图片控件</title><link href="http://fccaikai.github.io/jekyll/update/2017/03/03/Jekyll-Android-%E8%87%AA%E5%AE%9A%E4%B9%89%E8%BD%AE%E6%92%AD%E5%9B%BE%E7%89%87%E6%8E%A7%E4%BB%B6.html" rel="alternate" type="text/html" title="Android 自定义轮播图片控件" /><published>2017-03-03T09:56:00+08:00</published><updated>2017-03-03T09:56:00+08:00</updated><id>http://fccaikai.github.io/jekyll/update/2017/03/03/Jekyll-Android%20%E8%87%AA%E5%AE%9A%E4%B9%89%E8%BD%AE%E6%92%AD%E5%9B%BE%E7%89%87%E6%8E%A7%E4%BB%B6</id><content type="html" xml:base="http://fccaikai.github.io/jekyll/update/2017/03/03/Jekyll-Android-%E8%87%AA%E5%AE%9A%E4%B9%89%E8%BD%AE%E6%92%AD%E5%9B%BE%E7%89%87%E6%8E%A7%E4%BB%B6.html">&lt;h3 id=&quot;效果图&quot;&gt;效果图&lt;/h3&gt;
+&lt;p&gt;直接先上效果图。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1715403-cbf7c309b85e2770.gif?imageMogr2/auto-orient/strip&quot; alt=&quot;轮播图.gif&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;###实现原理
+要完成一个轮播图片，首先想到的应该是使用ViewPager来实现。ViewPager已经有了滑动的功能，我们只要让它自己滚动。再加上下方的小圆点就行了。所以我们本次的自定义控件就是由ViewPager和LinearLayout叠加起来组成的。&lt;/p&gt;
+
+&lt;p&gt;###难点&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;如何循环滚动&lt;/p&gt;
+
+    &lt;p&gt;首先我们的轮播图是可以一直滚动下去的。那我们在Adapter中设置的大小就需要无限大（这里我们取&lt;code class=&quot;highlighter-rouge&quot;&gt;Integer.MAX_VALUE&lt;/code&gt;的值）。假设我们有三张图片。要在第三张图片时，继续滚动到第一张。其实就是把第四个位置的&lt;code class=&quot;highlighter-rouge&quot;&gt;ImageView&lt;/code&gt;加载的图片地址为第一张的。这里我们用&lt;code class=&quot;highlighter-rouge&quot;&gt;模运算&lt;/code&gt;来处理。如：第四张时，3%3=0（Adapter是从0开始，3代表第四张）。我们就能拿到第1个位置的图片地址。具体实现步骤如下：&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;###创建一个自定义的ViewPager
+先上完整的代码&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;package com.kcode.autoscrollviewpager.view;
+
+import android.content.Context;
+import android.os.Message;
+import android.support.v4.view.ViewPager;
+import android.util.AttributeSet;
+import android.util.Log;
+import android.view.MotionEvent;
+
+import java.util.Timer;
+import java.util.TimerTask;
+
+/**
+ * Created by caik on 2016/10/10.
+ */
+
+public class AutoViewPager extends ViewPager {
+
+    private static final String TAG = &quot;AutoViewPager&quot;;
+
+    private int currentItem;
+
+    private Timer mTimer;
+    private AutoTask mTask;
+
+    public AutoViewPager(Context context) {
+        super(context);
+    }
+
+    public AutoViewPager(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
+
+    public void init(AutoViewPager viewPager,BaseViewPagerAdapter adapter){
+        adapter.init(viewPager,adapter);
+    }
+
+    public void start(){
+        //先停止
+        onStop();
+
+        if (mTimer == null) {
+            mTimer = new Timer();
+        }
+        mTimer.schedule(new AutoTask(),3000,3000);
+
+    }
+
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            currentItem = getCurrentItem();
+            if(currentItem == getAdapter().getCount() - 1){
+                currentItem = 0 ;
+            }else {
+                currentItem++ ;
+            }
+            setCurrentItem(currentItem);
+        }
+    };
+
+    private AutoHandler mHandler = new AutoHandler();
+
+    public void updatePointView(int size) {
+        if (getParent() instanceof AutoScrollViewPager){
+            AutoScrollViewPager pager = (AutoScrollViewPager) getParent();
+            pager.initPointView(size);
+        }else {
+            Log.e(TAG,&quot;parent view not be AutoScrollViewPager&quot;);
+        }
+    }
+
+    public void onPageSelected(int position) {
+        AutoScrollViewPager pager = (AutoScrollViewPager) getParent();
+        pager.updatePointView(position);
+    }
+
+    private class AutoTask extends TimerTask{
+
+        @Override
+        public void run() {
+            mHandler.post(runnable);
+        }
+    }
+
+    private final static class AutoHandler extends android.os.Handler{
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+
+        }
+    }
+
+    public void onStop(){
+        //先取消定时器
+        if (mTimer != null) {
+            mTimer.cancel();
+            mTimer = null;
+        }
+    }
+
+    public void onDestroy(){
+        onStop();
+    }
+
+    public void onResume(){
+        start();
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent ev) {
+        switch (ev.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                onStop();
+                break;
+            case MotionEvent.ACTION_UP:
+                onResume();
+                break;
+        }
+        return super.onTouchEvent(ev);
+    }
+}
+
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;AutoViewPager 继承至ViewPager，我们通过&lt;code class=&quot;highlighter-rouge&quot;&gt;Timer&lt;/code&gt;来启动一个定时器。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	public void start(){
+        if (mTimer == null) {
+            mTimer = new Timer();
+        }
+        //第一个3000表示3秒后开始执行，第二个3000表示每隔3秒执行一次
+        mTimer.schedule(new AutoTask(),3000,3000);
+
+    }
+
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+        	//这里开始滚动图片，先取到当前显示第几张图片。如果滚到最后一张时，回到第一张
+            currentItem = getCurrentItem();
+            if(currentItem == getAdapter().getCount() - 1){
+                currentItem = 0 ;
+            }else {
+                currentItem++ ;
+            }
+            setCurrentItem(currentItem);
+        }
+    };
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;每隔三秒去更新一下页面。这样就能起到一个自己滚动的效果。&lt;/p&gt;
+
+&lt;p&gt;###设置Adapter&lt;/p&gt;
+
+&lt;p&gt;要实现无限循环，只要把Adapter中的&lt;code class=&quot;highlighter-rouge&quot;&gt;getCount()&lt;/code&gt;方法返回无限大，直接返回&lt;code class=&quot;highlighter-rouge&quot;&gt;Integer.MAX_VALUE&lt;/code&gt;就可以了。&lt;/p&gt;
+
+&lt;p&gt;完整的Adapter代码：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;package com.kcode.autoscrollviewpager.view;
+
+import android.content.Context;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+
+import com.kcode.autoscrollviewpager.R;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by caik on 2016/10/11.
+ */
+
+public abstract class BaseViewPagerAdapter&amp;lt;T&amp;gt; extends PagerAdapter implements ViewPager.OnPageChangeListener{
+
+    private List&amp;lt;T&amp;gt; data = new ArrayList&amp;lt;&amp;gt;();
+
+    private Context mContext;
+    private AutoViewPager mView;
+
+    private OnAutoViewPagerItemClickListener listener;
+
+    public BaseViewPagerAdapter(Context context, List&amp;lt;T&amp;gt; data) {
+        this.mContext = context;
+        this.data = data;
+    }
+
+    public BaseViewPagerAdapter(Context context, List&amp;lt;T&amp;gt; data,OnAutoViewPagerItemClickListener listener) {
+        this.mContext = context;
+        this.data = data;
+        this.listener = listener;
+    }
+
+    public void init(AutoViewPager viewPager,BaseViewPagerAdapter adapter){
+        mView = viewPager;
+        mView.setAdapter(this);
+        mView.addOnPageChangeListener(this);
+
+        if (data == null || data.size() == 0){
+            return;
+        }
+        //设置初始为中间，这样一开始就能够往左滑动了
+        int position = Integer.MAX_VALUE/2 - (Integer.MAX_VALUE/2) % getRealCount();
+        mView.setCurrentItem(position);
+
+        mView.start();
+        mView.updatePointView(getRealCount());
+    }
+
+    public void setListener(OnAutoViewPagerItemClickListener listener) {
+        this.listener = listener;
+    }
+
+    public void add(T t){
+        data.add(t);
+        notifyDataSetChanged();
+        mView.updatePointView(getRealCount());
+    }
+
+    @Override
+    public int getCount() {
+        return data == null ? 0 : Integer.MAX_VALUE;
+    }
+
+    public int getRealCount(){
+        return data == null ? 0 : data.size();
+    }
+
+    @Override
+    public void destroyItem(ViewGroup container, int position, Object object) {
+        container.removeView((ImageView) object);
+    }
+
+    @Override
+    public Object instantiateItem(ViewGroup container, final int position) {
+        ImageView view = (ImageView) LayoutInflater.from(mContext)
+                .inflate(R.layout.imageview,container,false);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (listener != null) {
+                    listener.onItemClick(position % getRealCount(),data.get(position % getRealCount()));
+                }
+            }
+        });
+
+        loadImage(view,position, data.get(position % getRealCount()));
+        container.addView(view);
+
+        return view;
+    }
+
+    public abstract void loadImage(ImageView view,int position,T t);
+
+    @Override
+    public boolean isViewFromObject(View view, Object object) {
+        return view == object;
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+        mView.onPageSelected(position % getRealCount());
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
+    }
+
+    public interface OnAutoViewPagerItemClickListener&amp;lt;T&amp;gt; {
+        void onItemClick(int position,T t);
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;这里我们使用了泛型，因为有时候我们可能只传一个url集合进来，也可能是对象集合，方便拓展。加载图片的方法也是一个抽象方法&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public abstract void loadImage(ImageView view,int position,T t);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;因为每个App使用的图片加载框架都不一样，所以这里的加载就留个App自己实现。使用的时候创建Adapter只要继承这里的BaseViewPagerAdapter，然后重写&lt;code class=&quot;highlighter-rouge&quot;&gt;loadImage(ImageView view,int position,T t)&lt;/code&gt;方法，在这里进行图片的加载就行了。&lt;/p&gt;
+
+&lt;p&gt;如果你需不要底部的小圆点标示的话，这里就已经完成了。使用的时候，直接使用&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	&amp;lt;com.kcode.autoscrollviewpager.view.AutoViewPager
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;200dp&quot;&amp;gt;
+        
+    &amp;lt;/com.kcode.autoscrollviewpager.view.AutoViewPager&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;代替&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	&amp;lt;android.support.v4.view.ViewPager
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;match_parent&quot;&amp;gt;
+
+    &amp;lt;/android.support.v4.view.ViewPager&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;就可以了。需要底部的小圆点标示的话，继续往下&lt;/p&gt;
+
+&lt;p&gt;###添加小圆点标示
+需要添加小圆点标示的话。其实就是在ViewPager上再加一层。我们新建一个View，继承至&lt;code class=&quot;highlighter-rouge&quot;&gt;RelativeLayout&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;完整代码如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;package com.kcode.autoscrollviewpager.view;
+
+import android.content.Context;
+import android.util.AttributeSet;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+
+import com.kcode.autoscrollviewpager.R;
+
+import static android.view.Gravity.CENTER;
+
+/**
+ * Created by caik on 2016/10/17.
+ */
+
+public class AutoScrollViewPager extends RelativeLayout {
+
+    private AutoViewPager mViewPager;
+
+    private Context mContext;
+
+    private LinearLayout layout;
+
+    public AutoScrollViewPager(Context context) {
+        super(context);
+        init(context);
+    }
+
+    public AutoScrollViewPager(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        init(context);
+    }
+
+    private void init(Context context) {
+        mContext = context;
+        mViewPager = new AutoViewPager(context);
+        layout = new LinearLayout(mContext);
+        addView(mViewPager);
+    }
+
+    public void setAdapter(BaseViewPagerAdapter adapter) {
+        if (mViewPager != null) {
+            mViewPager.init(mViewPager, adapter);
+        }
+    }
+
+    public AutoViewPager getViewPager() {
+        return mViewPager;
+    }
+
+    public void initPointView(int size) {
+
+        layout = new LinearLayout(mContext);
+        for (int i = 0; i &amp;lt; size; i++) {
+            ImageView imageView = new ImageView(mContext);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(20, 20);
+            params.leftMargin = 8;
+            params.gravity = CENTER;
+            imageView.setLayoutParams(params);
+            if (i == 0) {
+                imageView.setBackgroundResource(R.drawable.point_checked);
+            } else {
+                imageView.setBackgroundResource(R.drawable.point_normal);
+            }
+
+            layout.addView(imageView);
+        }
+
+        LayoutParams layoutParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        layoutParams.addRule(ALIGN_PARENT_BOTTOM);
+        layoutParams.addRule(ALIGN_PARENT_RIGHT);
+        layoutParams.setMargins(12, 20, 12, 20);
+        layout.setLayoutParams(layoutParams);
+        addView(layout);
+    }
+
+
+    public void updatePointView(int position) {
+        int size = layout.getChildCount();
+        for (int i = 0; i &amp;lt; size; i++) {
+            ImageView imageView = (ImageView) layout.getChildAt(i);
+            if (i == position) {
+                imageView.setBackgroundResource(R.drawable.point_checked);
+            } else {
+                imageView.setBackgroundResource(R.drawable.point_normal);
+            }
+
+        }
+    }
+
+    public void onDestroy() {
+        if (mViewPager != null) {
+            mViewPager.onDestroy();
+        }
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;再通过&lt;code class=&quot;highlighter-rouge&quot;&gt;addView(mViewPager);&lt;/code&gt;添加。&lt;/p&gt;
+
+&lt;p&gt;需要准备两张图片，这里用Shape进行绘制,Shape的使用可以查看&lt;a href=&quot;http://www.jianshu.com/p/ef734937b521&quot;&gt;Android Shape使用&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;初始化小圆点：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	public void initPointView(int size){
+
+        layout = new LinearLayout(mContext);
+        for (int i = 0; i &amp;lt; size; i++) {
+            ImageView imageView = new ImageView(mContext);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(20,20);
+            params.leftMargin = 8;
+            params.gravity = CENTER;
+            imageView.setLayoutParams(params);
+            if (i == 0) {
+                imageView.setBackgroundResource(R.drawable.point_checked);
+            }else {
+                imageView.setBackgroundResource(R.drawable.point_normal);
+            }
+
+            layout.addView(imageView);
+        }
+
+        LayoutParams layoutParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        layoutParams.addRule(ALIGN_PARENT_BOTTOM);
+        layoutParams.addRule(ALIGN_PARENT_RIGHT);
+        layoutParams.setMargins(12,20,12,20);
+        layout.setLayoutParams(layoutParams);
+        addView(layout);
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;更新小圆点：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	public void updatePointView(int position) {
+        int size = layout.getChildCount();
+        for (int i = 0; i &amp;lt; size; i++) {
+            ImageView imageView = (ImageView) layout.getChildAt(i);
+            if (i == position){
+                imageView.setBackgroundResource(R.drawable.point_checked);
+            }else {
+                imageView.setBackgroundResource(R.drawable.point_normal);
+            }
+
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;带小圆点的使用以下控件&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	&amp;lt;com.kcode.autoscrollviewpager.view.AutoScrollViewPager
+        android:id=&quot;@+id/viewPager&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;220dp&quot;&amp;gt;
+
+    &amp;lt;/com.kcode.autoscrollviewpager.view.AutoScrollViewPager&amp;gt;
+    
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;以上就是主要的代码了。
+###使用&lt;/p&gt;
+
+&lt;p&gt;具体使用：&lt;a href=&quot;http://www.jianshu.com/p/11f52c3971ba&quot;&gt;Android 自定义轮播图片控件使用&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;源码地址：&lt;a href=&quot;https://github.com/fccaikai/AutoScrollViewPager&quot;&gt;AutoViewPager&lt;/a&gt;  欢迎大家start。还在更新中，目前可能还不是很完善。&lt;/p&gt;
+
+&lt;p&gt;我的简书：http://www.jianshu.com/users/629c1b27e187/latest_articles
+喜欢的可以关注一下。&lt;/p&gt;</content><author><name></name></author><summary type="html">效果图 直接先上效果图。</summary></entry><entry><title type="html">Realm for Android</title><link href="http://fccaikai.github.io/jekyll/update/2017/03/03/Jekyll-Realm-for-Android.html" rel="alternate" type="text/html" title="Realm for Android" /><published>2017-03-03T09:53:00+08:00</published><updated>2017-03-03T09:53:00+08:00</updated><id>http://fccaikai.github.io/jekyll/update/2017/03/03/Jekyll-Realm%20for%20Android</id><content type="html" xml:base="http://fccaikai.github.io/jekyll/update/2017/03/03/Jekyll-Realm-for-Android.html">&lt;p&gt;##简介&lt;/p&gt;
+
+&lt;p&gt;realm是一个跨平台移动数据库引擎，支持iOS、OS
+X（Objective-C和Swift）、Android以及React Native。根据官网的介绍来说，是比Sqlite存储更加快读、高效。现在来的介绍一下realm环境的配置以及简单的使用。&lt;/p&gt;
+
+&lt;p&gt;官网：&lt;a href=&quot;https://realm.io&quot;&gt;realm&lt;/a&gt;
+github:&lt;a href=&quot;https://github.com/realm/realm-java&quot;&gt;realm-java&lt;/a&gt;
+官方教程：&lt;a href=&quot;https://realm.io/docs/java/latest/&quot;&gt;realm docs&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;##Realm使用
+###集成&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;一&lt;/p&gt;
+
+    &lt;p&gt;在Project目录下的&lt;code class=&quot;highlighter-rouge&quot;&gt;build.gradle&lt;/code&gt;中做一下修改：&lt;/p&gt;
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  buildscript {
+  repositories {
+      jcenter()
+  }
+  dependencies {
+      classpath 'com.android.tools.build:gradle:2.2.1'
+      classpath &quot;io.realm:realm-gradle-plugin:2.2.0&quot;
+      // NOTE: Do not place your application dependencies here; they belong
+      // in the individual module build.gradle files
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;二&lt;/p&gt;
+
+    &lt;p&gt;在module目录下的&lt;code class=&quot;highlighter-rouge&quot;&gt;build.gradle&lt;/code&gt;中添加：&lt;/p&gt;
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  apply plugin: 'realm-android'
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+
+    &lt;hr /&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;###使用&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;初始化&lt;/p&gt;
+
+    &lt;p&gt;在&lt;code class=&quot;highlighter-rouge&quot;&gt;Application&lt;/code&gt;中进行初始化&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class App extends Application {
+      @Override
+      public void onCreate() {
+          super.onCreate();
+          initRealm();
+      }
+    
+      private void initRealm() {
+          Realm.init(this);
+      }
+}
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+    &lt;p&gt;注：不要忘记在&lt;code class=&quot;highlighter-rouge&quot;&gt;manifest&lt;/code&gt;中注册&lt;code class=&quot;highlighter-rouge&quot;&gt;Application&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;创建实体类&lt;/p&gt;
+
+    &lt;p&gt;创建一个User实体类，需要&lt;code class=&quot;highlighter-rouge&quot;&gt;extedns RealmObject&lt;/code&gt;，&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  public class User extends RealmObject {
+      private String name;
+      private int age;
+      //get set方法省略
+  }
+    
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+
+    &lt;p&gt;或者 &lt;code class=&quot;highlighter-rouge&quot;&gt;implements RealmModel&lt;/code&gt;同时加上注解&lt;code class=&quot;highlighter-rouge&quot;&gt;@RealmClass&lt;/code&gt;。&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  @RealmClass
+public class User implements RealmModel {
+      private String name;
+      private int age;
+      //get set方法省略
+}
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;插入数据&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; Realm realm = Realm.getDefaultInstance();
+      /***写法一***/
+      realm.executeTransaction(new Realm.Transaction() {
+          @Override
+          public void execute(Realm realm) {
+              User user = realm.createObject(User.class);
+              user.setName(name);
+              user.setAge(Integer.parseInt(age));
+
+              //也可以使用下面的方法
+              /*
+              User user = new User();
+              user.setName(name);
+              user.setAge(Integer.parseInt(age));
+              realm.copyToRealm(user);
+              */
+          }
+      });
+
+
+      /* 写法二
+      realm.executeTransactionAsync(new Realm.Transaction() {
+          @Override
+          public void execute(Realm realm) {
+              User user = realm.createObject(User.class);
+              user.setName(name);
+              user.setAge(Integer.parseInt(age));
+          }
+      }, new Realm.Transaction.OnSuccess() {
+          @Override
+          public void onSuccess() {
+              //成功回调
+          }
+      });*/
+
+      //写法三
+      /*realm.beginTransaction();
+      User user = realm.createObject(User.class);
+      user.setName(name);
+      user.setAge(Integer.parseInt(age));
+      realm.commitTransaction();*/
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;更新数据&lt;/p&gt;
+
+    &lt;p&gt;这里是先根据name去查询到对应的记录，然后将所有记录的age修改为10。
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;.where(Class&amp;lt;E&amp;gt; clazz)&lt;/code&gt;表示要查询哪个类的数据。
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;equalTo(String fieldName, String value)&lt;/code&gt;表示查询&lt;code class=&quot;highlighter-rouge&quot;&gt;fieldName&lt;/code&gt;值为&lt;code class=&quot;highlighter-rouge&quot;&gt;value&lt;/code&gt;的记录。&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;findAll()&lt;/code&gt;  表示返回符合该条件的所有记录。返回类型为&lt;code class=&quot;highlighter-rouge&quot;&gt;RealmResults&amp;lt;E&amp;gt;&lt;/code&gt;.但是我们也可以直接用&lt;code class=&quot;highlighter-rouge&quot;&gt;List&amp;lt;?&amp;gt;&lt;/code&gt;接收。&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+      Realm realm = Realm.getDefaultInstance();
+      final User user = new User();
+      user.setName(name);
+      user.setAge(Integer.parseInt(age));
+
+      realm.executeTransaction(new Realm.Transaction() {
+          @Override
+          public void execute(Realm realm) {
+              List&amp;lt;User&amp;gt; data = realm.where(User.class).equalTo(&quot;name&quot;,name).findAll();
+              if (data.size() == 0){
+                  print(&quot;未查询到对应的记录&quot;);
+                  return;
+              }
+
+              //将所有姓名为{name}的年龄修改为10
+              for (User user : data) {
+                  user.setAge(10);
+              }
+
+              print(&quot;更新完成&quot;);
+          }
+      });
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;查询数据
+这里只展示了查询所有数据，根据条件查询数据可以参考刚才的更新数据。&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Realm realm = Realm.getDefaultInstance();
+ RealmQuery&amp;lt;User&amp;gt; query =  realm.where(User.class);
+List&amp;lt;User&amp;gt; data =  query.findAll();
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;删除数据&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  Realm realm = Realm.getDefaultInstance();
+      realm.executeTransaction(new Realm.Transaction() {
+          @Override
+          public void execute(Realm realm) {
+              RealmResults&amp;lt;User&amp;gt; results = realm.where(User.class).findAll();
+              if (results.size() == 0) {
+                  print(&quot;无数据&quot;);
+                  return;
+              }
+              //删除第一条数据
+              results.deleteFirstFromRealm();
+              print(&quot;删除成功&quot;);
+              //删除最后一条数据
+              //results.deleteLastFromRealm();
+          }
+      });
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;源码地址:&lt;a href=&quot;https://github.com/fccaikai/RealmExample.git&quot;&gt;RealmExample&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">##简介</summary></entry><entry><title type="html">使用DialogFragment实现底部弹出框</title><link href="http://fccaikai.github.io/jekyll/update/2017/03/03/Jekyll-%E4%BD%BF%E7%94%A8DialogFragment%E5%AE%9E%E7%8E%B0%E5%BA%95%E9%83%A8%E5%BC%B9%E5%87%BA%E6%A1%86.html" rel="alternate" type="text/html" title="使用DialogFragment实现底部弹出框" /><published>2017-03-03T09:49:00+08:00</published><updated>2017-03-03T09:49:00+08:00</updated><id>http://fccaikai.github.io/jekyll/update/2017/03/03/Jekyll-%E4%BD%BF%E7%94%A8DialogFragment%E5%AE%9E%E7%8E%B0%E5%BA%95%E9%83%A8%E5%BC%B9%E5%87%BA%E6%A1%86</id><content type="html" xml:base="http://fccaikai.github.io/jekyll/update/2017/03/03/Jekyll-%E4%BD%BF%E7%94%A8DialogFragment%E5%AE%9E%E7%8E%B0%E5%BA%95%E9%83%A8%E5%BC%B9%E5%87%BA%E6%A1%86.html">&lt;h2 id=&quot;效果图&quot;&gt;效果图&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1715403-eb61f9cb865d44b4.gif?imageMogr2/auto-orient/strip&quot; alt=&quot;device-2016-09-25-174226.gif&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;##实现
+&lt;a href=&quot;https://developer.android.com/reference/android/app/DialogFragment.html&quot;&gt;DialogFragment&lt;/a&gt;是3.0之后提供的一个弹出框实现类。使用DialogFragment的好处是能够更好的控制其生命周期。&lt;/p&gt;
+
+&lt;p&gt;###创建一个DialogFragment&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class BottomDialog extends DialogFragment {
+
+    public static BottomDialog newInstance() {
+
+        Bundle args = new Bundle();
+
+        BottomDialog fragment = new BottomDialog();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Window window = getDialog().getWindow();
+        WindowManager.LayoutParams params = window.getAttributes();
+        params.gravity = Gravity.BOTTOM;
+        params.width = WindowManager.LayoutParams.MATCH_PARENT;
+        window.setAttributes(params);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
+        View view = inflater.inflate(R.layout.dialog_bottom,container,false);
+        AnimationUtils.slideToUp(view);
+        return view;
+    }
+
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;对应的layout：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;LinearLayout&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;xmlns:android=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://schemas.android.com/apk/res/android&quot;&lt;/span&gt;
+              &lt;span class=&quot;na&quot;&gt;android:layout_width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;match_parent&quot;&lt;/span&gt;
+              &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;match_parent&quot;&lt;/span&gt;
+              &lt;span class=&quot;na&quot;&gt;android:orientation=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;vertical&quot;&lt;/span&gt;
+              &lt;span class=&quot;na&quot;&gt;android:padding=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@dimen/activity_horizontal_margin&quot;&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;android:background=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@color/colorAccent&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;TextView&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;android:layout_width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;match_parent&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;48dp&quot;&lt;/span&gt;
+              &lt;span class=&quot;na&quot;&gt;android:gravity=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;center_vertical&quot;&lt;/span&gt;
+              &lt;span class=&quot;na&quot;&gt;android:text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;bottomSheet&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/LinearLayout&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;###加载自定义布局&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
+        View view = inflater.inflate(R.layout.dialog_bottom,container,false);
+        AnimationUtils.slideToUp(view);
+        return view;
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;跟使用Fragment一样，重写&lt;code class=&quot;highlighter-rouge&quot;&gt;onCreateView&lt;/code&gt;方法。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;的作用是除掉弹出框的标题。&lt;/p&gt;
+
+&lt;p&gt;###设置DialogFragment的位置&lt;/p&gt;
+
+&lt;p&gt;一把我们的弹出框默认都是居中显示的，现在我们需要的是底部显示，只要把LayoutParams的gravity属性设置为Bottom。&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    @Override
+    public void onStart() {
+        super.onStart();
+        Window window = getDialog().getWindow();
+        WindowManager.LayoutParams params = window.getAttributes();
+        params.gravity = Gravity.BOTTOM;
+        params.width = WindowManager.LayoutParams.MATCH_PARENT;
+        window.setAttributes(params);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+    }
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;###加载动画&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;AnimationUtils.slideToUp(view);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public static void slideToUp(View view){
+        Animation slide = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0.0f,
+                Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF,
+                1.0f, Animation.RELATIVE_TO_SELF, 0.0f);
+
+        slide.setDuration(400);
+        slide.setFillAfter(true);
+        slide.setFillEnabled(true);
+        view.startAnimation(slide);
+
+        slide.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;相关阅读：&lt;a href=&quot;http://www.jianshu.com/p/1024ad202683&quot;&gt;使用BottomSheet实现底部菜单&lt;/a&gt;
+源码地址：&lt;a href=&quot;https://github.com/fccaikai/BottomMenuTutorial&quot;&gt;BottomMenuTutorial&lt;/a&gt; ，欢迎start,谢谢。&lt;/p&gt;</content><author><name></name></author><summary type="html">效果图</summary></entry><entry><title type="html">使用BottomSheet实现底部弹出框</title><link href="http://fccaikai.github.io/jekyll/update/2017/03/03/Jekyll-%E4%BD%BF%E7%94%A8Bottom-Sheet%E5%AE%9E%E7%8E%B0%E5%BA%95%E9%83%A8%E5%BC%B9%E5%87%BA%E6%A1%86.html" rel="alternate" type="text/html" title="使用BottomSheet实现底部弹出框" /><published>2017-03-03T09:49:00+08:00</published><updated>2017-03-03T09:49:00+08:00</updated><id>http://fccaikai.github.io/jekyll/update/2017/03/03/Jekyll-%E4%BD%BF%E7%94%A8Bottom%20Sheet%E5%AE%9E%E7%8E%B0%E5%BA%95%E9%83%A8%E5%BC%B9%E5%87%BA%E6%A1%86</id><content type="html" xml:base="http://fccaikai.github.io/jekyll/update/2017/03/03/Jekyll-%E4%BD%BF%E7%94%A8Bottom-Sheet%E5%AE%9E%E7%8E%B0%E5%BA%95%E9%83%A8%E5%BC%B9%E5%87%BA%E6%A1%86.html">&lt;p&gt;上一篇文章介绍了&lt;a href=&quot;http://www.jianshu.com/p/8d420b668eda&quot;&gt;使用DialogFragment实现弹底部菜单&lt;/a&gt;，这次我们使用android design library 中的&lt;a href=&quot;https://material.google.com/components/bottom-sheets.html&quot;&gt;Bottom Sheet&lt;/a&gt;来实现。
+Bottom Sheet是在support library 23.2之后提供的一个新控件，也就是需要用6.0以上的SDK进行编译才可以使用此控件，6.0以下的可以参考上一篇文章，使用&lt;a href=&quot;http://www.jianshu.com/p/8d420b668eda&quot;&gt;DialogFragment&lt;/a&gt;实现。
+先上效果图：
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1715403-40bbfdc3cb23236c.gif?imageMogr2/auto-orient/strip/480&quot; alt=&quot;device-2016-09-29-091428.gif&quot; /&gt;
+下面我们来一步一步使用Bottom Sheet实现底部弹出框的效果。&lt;/p&gt;
+&lt;h3 id=&quot;添加依赖&quot;&gt;添加依赖&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;compile 'com.android.support:design:24.2.0'
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;这里我使用的是24.2.0版本，但是只要是23.2.0+的版本就可以了&lt;/p&gt;
+
+&lt;p&gt;###创建一个layout&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;android.support.design.widget.CoordinatorLayout&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;xmlns:android=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://schemas.android.com/apk/res/android&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;xmlns:app=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://schemas.android.com/apk/res-auto&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;xmlns:tools=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://schemas.android.com/tools&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:layout_width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;match_parent&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;match_parent&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;LinearLayout&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:layout_width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;match_parent&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;match_parent&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:orientation=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;vertical&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:paddingBottom=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@dimen/activity_vertical_margin&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:paddingLeft=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@dimen/activity_horizontal_margin&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:paddingRight=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@dimen/activity_horizontal_margin&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:paddingTop=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@dimen/activity_vertical_margin&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Button&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@+id/button&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:layout_width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;match_parent&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:layout_centerHorizontal=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;true&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Show Bottom Sheet&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Button&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@+id/fragmentbutton&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:layout_width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;match_parent&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:layout_centerHorizontal=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;true&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Show Bottom Sheet Model&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/LinearLayout&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;RelativeLayout&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@+id/design_bottom_sheet&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:layout_width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;match_parent&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;match_parent&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:background=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@color/colorAccent&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:paddingBottom=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@dimen/activity_vertical_margin&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:paddingLeft=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@dimen/activity_horizontal_margin&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:paddingRight=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@dimen/activity_horizontal_margin&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:paddingTop=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@dimen/activity_vertical_margin&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;app:behavior_hideable=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;true&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;app:behavior_peekHeight=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;300dp&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;app:elevation=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;4dp&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;app:layout_behavior=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@string/bottom_sheet_behavior&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;TextView&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@+id/bottomsheet_text&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:layout_width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;match_parent&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Introducing Bottom Sheets&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:textColor=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#FFFFFF&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/RelativeLayout&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/android.support.design.widget.CoordinatorLayout&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;顶部的布局要用时&lt;code class=&quot;highlighter-rouge&quot;&gt;CoordinatorLayout&lt;/code&gt; 这个也是一个design中提供的一个新类。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;RelativeLayout
+        android:id=&quot;@+id/design_bottom_sheet&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;match_parent&quot;
+        android:background=&quot;@color/colorAccent&quot;
+        android:paddingBottom=&quot;@dimen/activity_vertical_margin&quot;
+        android:paddingLeft=&quot;@dimen/activity_horizontal_margin&quot;
+        android:paddingRight=&quot;@dimen/activity_horizontal_margin&quot;
+        android:paddingTop=&quot;@dimen/activity_vertical_margin&quot;
+        app:behavior_hideable=&quot;true&quot;
+        app:behavior_peekHeight=&quot;300dp&quot;
+        app:elevation=&quot;4dp&quot;
+        app:layout_behavior=&quot;@string/bottom_sheet_behavior&quot;&amp;gt;
+
+        &amp;lt;TextView
+            android:id=&quot;@+id/bottomsheet_text&quot;
+            android:layout_width=&quot;wrap_content&quot;
+            android:layout_height=&quot;match_parent&quot;
+            android:text=&quot;Introducing Bottom Sheets&quot;
+            android:textColor=&quot;#FFFFFF&quot;/&amp;gt;
+
+    &amp;lt;/RelativeLayout&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;这个&lt;code class=&quot;highlighter-rouge&quot;&gt;RelativeLayout&lt;/code&gt; 就是我们的底部菜单。我们可以看到有几个app开头的属性&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;        app:behavior_peekHeight=&quot;300dp&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;表示弹出后显示的高度为300dp。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;app:layout_behavior=&quot;@string/bottom_sheet_behavior&quot;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;表示这是一个bottom sheet。
+下面我们继续看Activity中的代码
+###展示一个普通的Bottom Sheet&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;		//获取到Bottom Sheet对象
+        View bottomSheet = findViewById(R.id.design_bottom_sheet);
+        final BottomSheetBehavior behavior = BottomSheetBehavior.from(bottomSheet);
+        //默认设置为隐藏
+        behavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+
+        mShowBottomSheet = (Button) findViewById(R.id.button);
+        mShowBottomSheet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showBottomSheet(behavior);
+            }
+        });
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	private void showBottomSheet(BottomSheetBehavior behavior) {
+        if (behavior.getState() == BottomSheetBehavior.STATE_HIDDEN) {
+            behavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+            mShowBottomSheet.setText(R.string.hide_bottom_sheet);
+        } else {
+            behavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+            mShowBottomSheet.setText(R.string.show_bottom_sheet);
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;###展示一个自定义的View
+创建一个DialogFragment继承至&lt;code class=&quot;highlighter-rouge&quot;&gt;BottomSheetDialogFragment&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class BottomSheetFragment extends BottomSheetDialogFragment {
+    public static BottomSheetFragment newInstance() {
+        BottomSheetFragment fragment = new BottomSheetFragment();
+        return fragment;
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_bottom_sheet,container,false);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;显示DialogFragment：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    private void showBottomSheetDialog() {
+        BottomSheetFragment fragment = BottomSheetFragment.newInstance();
+        fragment.show(getSupportFragmentManager(),BottomSheetFragment.class.getSimpleName());
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;源码地址：&lt;a href=&quot;https://github.com/fccaikai/BottomMenuTutorial&quot;&gt;BottomMenuTutorial&lt;/a&gt;,欢迎大家一起交流。&lt;/p&gt;</content><author><name></name></author><summary type="html">上一篇文章介绍了使用DialogFragment实现弹底部菜单，这次我们使用android design library 中的Bottom Sheet来实现。 Bottom Sheet是在support library 23.2之后提供的一个新控件，也就是需要用6.0以上的SDK进行编译才可以使用此控件，6.0以下的可以参考上一篇文章，使用DialogFragment实现。 先上效果图： 下面我们来一步一步使用Bottom Sheet实现底部弹出框的效果。 添加依赖 compile 'com.android.support:design:24.2.0' 这里我使用的是24.2.0版本，但是只要是23.2.0+的版本就可以了</summary></entry><entry><title type="html">Android 运行时权限处理</title><link href="http://fccaikai.github.io/jekyll/update/2017/03/03/Jekyll-Android-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%9D%83%E9%99%90%E5%A4%84%E7%90%86.html" rel="alternate" type="text/html" title="Android 运行时权限处理" /><published>2017-03-03T09:31:00+08:00</published><updated>2017-03-03T09:31:00+08:00</updated><id>http://fccaikai.github.io/jekyll/update/2017/03/03/Jekyll-Android%20%E8%BF%90%E8%A1%8C%E6%97%B6%E6%9D%83%E9%99%90%E5%A4%84%E7%90%86</id><content type="html" xml:base="http://fccaikai.github.io/jekyll/update/2017/03/03/Jekyll-Android-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%9D%83%E9%99%90%E5%A4%84%E7%90%86.html">&lt;h3 id=&quot;android-运行时权限处理&quot;&gt;Android 运行时权限处理&lt;/h3&gt;
 
 &lt;h4 id=&quot;描述&quot;&gt;描述&lt;/h4&gt;
 &lt;p&gt;从Android 6.0（API级别23）开始，用户开始在应用运行时向其授予权限，而不是在应用安装时授予。此方法可以简化应用安装过程，因为用户在安装或更新应用时不需要授予权限。它还让用户可以对应用的功能进行更多控制；例如，用户可以选择为相机应用提供相机访问权限，而不提供设备位置的访问权限。用户可以随时进入应用的“Settings”屏幕调用权限。具体介绍详见&lt;a href=&quot;https://developer.android.com/training/permissions/requesting.html&quot;&gt;官网介绍&lt;/a&gt;。&lt;/p&gt;
