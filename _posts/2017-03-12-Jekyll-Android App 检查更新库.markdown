@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Android Data Binding详解"
+title:  "Android App 检查更新库"
 date:   2017-03-05 20:42:00 +0800
 categories: jekyll update
 ---
