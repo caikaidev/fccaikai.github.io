@@ -157,3 +157,5 @@ updateWrapper.start();
     ```compile 'com.squareup.okhttp3:okhttp:3.6.0'```
 
  如果你不想使用这两个库，可以使用```exclude```排除
+
+[View on GitHub](https://github.com/fccaikai/AppUpdate)
