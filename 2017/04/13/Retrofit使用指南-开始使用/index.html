@@ -10,7 +10,7 @@
     
     <title>
         
-            Hello World | 
+            Retrofit使用指南-开始使用 | 
         
         Ck Blog
     </title>
@@ -58,7 +58,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="https://github.com/fccaikai">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Hello World | Ck Blog">
+    <meta property="og:title" content="Retrofit使用指南-开始使用 | Ck Blog">
     <meta property="og:description" content="null">
     
 
@@ -247,7 +247,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Quick-Start"><span class="post-toc-number">1.</span> <span class="post-toc-text">Quick Start</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Create-a-new-post"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Create a new post</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Run-server"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Run server</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Generate-static-files"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Generate static files</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Deploy-to-remote-sites"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#什么是Retrofit"><span class="post-toc-number">1.</span> <span class="post-toc-text">什么是Retrofit</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#准备"><span class="post-toc-number">2.</span> <span class="post-toc-text">准备</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#AndroidM网络权限"><span class="post-toc-number">3.</span> <span class="post-toc-text">AndroidM网络权限</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如何定义API路径"><span class="post-toc-number">4.</span> <span class="post-toc-text">如何定义API路径</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#构建Retrofit"><span class="post-toc-number">5.</span> <span class="post-toc-text">构建Retrofit</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#JSON-解析"><span class="post-toc-number">6.</span> <span class="post-toc-text">JSON 解析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如何使用Retrofit发起请求"><span class="post-toc-number">7.</span> <span class="post-toc-text">如何使用Retrofit发起请求</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#结束语"><span class="post-toc-number">8.</span> <span class="post-toc-text">结束语</span></a></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -284,7 +284,7 @@
         
     
             <p class="article-headline-p">
-                Hello World
+                Retrofit使用指南-开始使用
             </p>
         </div>
 
@@ -343,7 +343,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Hello World&url=https://github.com/fccaikai//2017/04/13/hello-world/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Retrofit使用指南-开始使用&url=https://github.com/fccaikai//2017/04/13/Retrofit使用指南-开始使用/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -352,7 +352,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Hello World&url=https://github.com/fccaikai//2017/04/13/hello-world/index.html&via=Cai Kai" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Retrofit使用指南-开始使用&url=https://github.com/fccaikai//2017/04/13/Retrofit使用指南-开始使用/index.html&via=Cai Kai" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -361,7 +361,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/fccaikai//2017/04/13/hello-world/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/fccaikai//2017/04/13/Retrofit使用指南-开始使用/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -370,7 +370,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=https://github.com/fccaikai//2017/04/13/hello-world/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://github.com/fccaikai//2017/04/13/Retrofit使用指南-开始使用/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -394,15 +394,30 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <h3 id="什么是Retrofit"><a href="#什么是Retrofit" class="headerlink" title="什么是Retrofit"></a>什么是Retrofit</h3><p>参考文章：<a href="https://futurestud.io/tutorials/retrofit-getting-started-and-android-client" target="_blank" rel="external">Retrofit — Getting Started and Creating an Android Client</a>   </p>
+<p>在官网上是用这么一句话去介绍的   </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">A type-safe REST client for Android and Java.</div></pre></td></tr></table></figure>
+<p>​    你能够使用注解的方式去定义HTTP请求、URL参数替换和查询。另外、它还能够自定义HTTP头headers、实现文件上传、文件下载等一系列功能。</p>
+<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>首先，将Retrofit依赖到我们的项目中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">```groovy</div><div class="line">dependencies &#123;  </div><div class="line">    // Retrofit &amp; OkHttp</div><div class="line">    compile &apos;com.squareup.retrofit2:retrofit:2.2.0&apos;</div><div class="line">    compile &apos;com.squareup.retrofit2:converter-gson:2.2.0&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="AndroidM网络权限"><a href="#AndroidM网络权限" class="headerlink" title="AndroidM网络权限"></a>AndroidM网络权限</h3><p>Retrofit是用来做网络请求的，所以我们需要用到网络权限。在<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">```xml</div><div class="line">&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="如何定义API路径"><a href="#如何定义API路径" class="headerlink" title="如何定义API路径"></a>如何定义API路径</h3><p>下图中的代码，定义了一个<figure class="highlight plain"><figcaption><span>String user```传入。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">注意：```&#123;user&#125;```跟```@Path(&quot;user&quot;)```一定要定义的一样。</div><div class="line"></div><div class="line">```java</div><div class="line">public interface GitHubClient &#123;  </div><div class="line">    @GET(&quot;/users/&#123;user&#125;/repos&quot;)</div><div class="line">    Call&lt;List&lt;GitHubRepo&gt;&gt; reposForUser(</div><div class="line">        @Path(&quot;user&quot;) String user</div><div class="line">    );</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>不要忘记创建<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">```java</div><div class="line">public class GitHubRepo &#123;  </div><div class="line">    private int id;</div><div class="line">    private String name;</div><div class="line"></div><div class="line">    public GitHubRepo() &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public int getId() &#123;</div><div class="line">        return id;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public String getName() &#123;</div><div class="line">        return name;</div><div class="line">    &#125;</div><div class="line">  </div><div class="line">  	@Override</div><div class="line">    public String toString() &#123;</div><div class="line">        return &quot;id=&quot; + id + &quot;,name=&quot; + name;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="构建Retrofit"><a href="#构建Retrofit" class="headerlink" title="构建Retrofit"></a>构建Retrofit</h3><p>从下面的代码可以看出Retrofit的网络请求也还是使用OkHttp实现的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">String API_BASE_URL = <span class="string">"https://api.github.com/"</span>;</div><div class="line"></div><div class="line">OkHttpClient.Builder httpClient = <span class="keyword">new</span> OkHttpClient.Builder();</div><div class="line"></div><div class="line">Retrofit.Builder builder =  </div><div class="line">    <span class="keyword">new</span> Retrofit.Builder()</div><div class="line">            .baseUrl(API_BASE_URL)</div><div class="line">  			<span class="comment">//添加Gson解析</span></div><div class="line">            .addConverterFactory(</div><div class="line">                GsonConverterFactory.create()</div><div class="line">            );</div><div class="line"></div><div class="line">Retrofit retrofit =  </div><div class="line">    builder</div><div class="line">        .client(</div><div class="line">            httpClient.build()</div><div class="line">        )</div><div class="line">        .build();</div><div class="line"></div><div class="line"><span class="comment">//获取到GitHubClient实例，后面需要用到client来发起网路请求</span></div><div class="line">GitHubClient client =  retrofit.create(GitHubClient.class);</div></pre></td></tr></table></figure>
+<h3 id="JSON-解析"><a href="#JSON-解析" class="headerlink" title="JSON 解析"></a>JSON 解析</h3><p>Retrofit提供了多种JSON解析方式：</p>
+<ul>
+<li><p>Gson - <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">+ Jackson - ```com.squareup.retrofit2:converter-jackson</div></pre></td></tr></table></figure></p>
+</li>
+<li><p>Moshi - <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">+ Protobuf - ```com.squareup.retrofit2:converter-protobuf</div></pre></td></tr></table></figure></p>
+</li>
+<li><p>Wire - <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">+ Simple Framework - ```com.squareup.retrofit2:converter-simplexml</div></pre></td></tr></table></figure></p>
+</li>
+<li><p>Scalars - <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">+ LoganSquare - `com.github.aurae.retrofit2:converter-logansquare`</div><div class="line">+ FastJson - `org.ligboy.retrofit2:converter-fastjson` or `org.ligboy.retrofit2:converter-fastjson-android`</div><div class="line"></div><div class="line">这里我们使用的是GSON。前面已经配置过了</div><div class="line"></div><div class="line">```groovy</div><div class="line">dependencies &#123;  </div><div class="line">    compile &apos;com.squareup.retrofit2:converter-gson:2.2.0&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+</li>
+</ul>
+<h3 id="如何使用Retrofit发起请求"><a href="#如何使用Retrofit发起请求" class="headerlink" title="如何使用Retrofit发起请求"></a>如何使用Retrofit发起请求</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">//根据构建Retrofit处的代码获取到client实例</div><div class="line">GitHubClient client = ...;</div><div class="line"></div><div class="line">      Call&lt;List&lt;GitHubRepo&gt;&gt; call = client.reposForUser(&quot;fs-opensource&quot;);</div><div class="line"></div><div class="line">      call.enqueue(new Callback&lt;List&lt;GitHubRepo&gt;&gt;() &#123;</div><div class="line">          @Override</div><div class="line">          public void onResponse(Call&lt;List&lt;GitHubRepo&gt;&gt; call, Response&lt;List&lt;GitHubRepo&gt;&gt; response) &#123;</div><div class="line">              if (response.isSuccessful()) &#123;</div><div class="line">              	//服务端响应成功</div><div class="line">                  List&lt;GitHubRepo&gt; repos = response.body();</div><div class="line">                  for (GitHubRepo repo :</div><div class="line">                          repos) &#123;</div><div class="line">                      //打印结果</div><div class="line">                      Log.d(TAG, repo.toString());</div><div class="line">                  &#125;</div><div class="line">              &#125;</div><div class="line">          &#125;</div><div class="line"></div><div class="line">          @Override</div><div class="line">          public void onFailure(Call&lt;List&lt;GitHubRepo&gt;&gt; call, Throwable t) &#123;</div><div class="line"></div><div class="line">          &#125;</div><div class="line">      &#125;);</div></pre></td></tr></table></figure>
+<h3 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h3><p>一个简单的使用Retrofit发起网络请求，并打印结果的功能已经完成了。</p>
 
     
 
@@ -429,19 +444,19 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
+        <a href="/2017/04/13/hello-world/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
-    
-        <a href="/2017/04/13/Retrofit使用指南-开始使用/" id="post_nav-older" class="next-content">
-            旧篇
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_forward</i>
-            </button>
-        </a>
     
 </nav>
 
